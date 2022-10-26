@@ -1,0 +1,44 @@
+.search-hero {
+  max-width: 500px;
+  padding-top: 45px;
+  margin-bottom:20px;
+  position: relative;
+
+}
+.icon{
+  color: black;
+  margin-top: 15px;
+  position: absolute;
+  top:45px;
+  right: 15px;
+
+}
+
+.inputt{
+  border: solid;
+  padding: 10px;
+  border-radius: 52px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.card-img-top{
+  cursor: pointer;
+}
+
+.example-icon{
+  border: none;
+  background: transparent;
+}
+
+
+.card img:hover {
+  transition: 0.3s ease-in-out;
+  transform: scale(1.1);
+}
+
+.cart{
+  size: 100px;
+}

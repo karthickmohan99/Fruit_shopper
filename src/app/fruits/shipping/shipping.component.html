@@ -1,0 +1,35 @@
+<div class="container  border-top-0 ">
+<div class="row mt-5 ">
+  <div class="col-lg-6">
+    <img src="https://images.unsplash.com/photo-1563746098251-d35aef196e83?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGJlcnJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" class="img-fluids">
+  </div>
+  <div class="col-lg-6">
+    <h2 class="tittle mt-5">It is the solid green fruit with high export value and economically highly</h2>
+    <h3 class="Subtitle mb-10">Banana </h3>
+  <div class="d-flex currency">
+    <h1 class="price">{{12 | currency: "INR" }}</h1>
+    <p class=""><del>26.00</del></p>
+  </div>
+
+  <h1>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</h1>
+  <div class="d-flex" >
+    <label><strong>Quantity :</strong></label>
+    <h2>{{cartProduct.Quantity}}</h2>
+  </div>
+  <div class="mt-2">
+    <button  class="btn btn-dark btn-lg w-75" routerLink="/home">product List</button>
+
+  </div>
+  <div class="mt-2">
+    <button type="button" (click)="paymentPage()"  class="btn btn-secondary btn-lg w-75 ">Buy Now</button>
+  </div>
+
+
+
+
+  </div>
+
+</div>
+</div>
+<!-- src="{{ item.irl }}" -->
+<!-- <p>{{cartProduct.Price}}</p> -->

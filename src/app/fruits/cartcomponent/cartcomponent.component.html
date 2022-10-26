@@ -1,0 +1,130 @@
+<div class="background">
+<mat-toolbar>
+  <span><strong>F R U I T </strong> S H O P P E R</span>
+  <span class="example-spacer"></span>
+  <button class="button" [matMenuTriggerFor]="menu">CART</button>
+</mat-toolbar>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/home">View Items</button>
+  <button mat-menu-item routerLink="/login">Log Out</button>
+</mat-menu>
+<div *ngIf="items.length===0" class='alert atert-info'><h1>Your Cart Is Empty.</h1></div>
+
+<!-- <div class="cart-item" *ngFor="let item of items">
+  <span>{{ item.Name}}</span>
+  <span>{{ item.Price | currency }}</span>
+</div> -->
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-lg-4 mt-3" *ngFor="let item of items">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top w-18rwm" src="{{item.irl}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{item.Name}}</h5>
+
+          <p class="card-text">{{item.Price|currency}}</p>
+          <div class="d-flex justify-content-between">
+          <button class="btn btn-dark">Confirm Order</button>
+          <button class="btn btn-dark" (click)="delete(item)">Remove</button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ </div> -->
+<div *ngIf="items.length>0"  class="container">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Product</th>
+      <th scope="col">Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+
+      <th scope="col">Actions</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items">
+      <td>
+
+        <img
+
+          class="card-img-top image"
+          src="{{ item.irl }}"
+          alt="Card image cap"
+
+
+        />
+      </td>
+      <td>{{ item.Name }}</td>
+      <td>
+        <button class="px-1 py-0 border rounded " (click)="onIncrement(item)"><ion-icon name="add-outline"></ion-icon></button><input   oninput="validity.valid||(value='')"  (keyup)="onKey($event,item)"  class="qtyinput text-center"  type="number"   value="{{ item.Quantity }}" min="1" ><button class="px-1 py-0 border rounded " (click)="onDecrement(item)"><ion-icon name="remove-outline"></ion-icon></button>
+        </td>
+
+      <!-- <td>{{ item.Price| currency:'INR'}}</td> -->
+      <td>{{ item.Quantity*item.Price| currency:'INR'}}</td>
+      <td>
+        <button type="button" class="btn btn-danger" (click)="delete(item)">Remove</button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-danger " (click)="confirmOrder(item)"   >Check Out</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<strong>Total amount :</strong>{{cartTotal | currency:'INR'}}
+</div>
+</div>
+
+
+<!-- <div class="formm">
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <div>
+    <div>
+      <label for="name"> Name </label>
+      <input id="address" type="text" formControlName="address" />
+    </div>
+   <div>
+    <label for="address"> Address </label>
+    <input id="address" type="text" formControlName="address" />
+  </div>
+</div>
+
+  <button class="button" type="submit">Purchase</button>
+</form>
+</div> -->
+<!-- <div
+  class="modal fade"
+  id="deleteModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Warning!</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">Are you sure to delete the item?</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-danger" >
+          Confirm Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+

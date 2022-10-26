@@ -1,0 +1,113 @@
+<mat-toolbar>
+  <span><strong>F R U I T </strong> S H O P P E R</span>
+  <span class="example-spacer"></span>
+  <button
+
+    class="example-icon favorite-icon"
+    routerLink="/cart"
+    aria-label="Example icon-button with heart icon"
+  >
+    <button type="button" class="btn border-secondary px-4 position-relative">
+      CART<mat-icon class="cart px-1">add_shopping_cart</mat-icon>
+      <span
+        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark"
+      >
+        {{ itemCount() }}
+      </span>
+    </button>
+  </button>
+</mat-toolbar>
+<div class="container">
+  <div class="row mt-2">
+    <div class="col col-md-4 offset-md-4"></div>
+  </div>
+  <div class="search-hero d-flex justify-content-end ms-auto">
+    <input
+      class="inputt"
+      type="text"
+      placeholder="Search..."
+      [(ngModel)]="filterTerm"
+      name="search"
+      autocomplete="off"
+    />
+    <label><mat-icon class="icon">search</mat-icon></label>
+    <!-- <a class="btn btn-primary mx-2" routerLink="/create">Create</a> -->
+  </div>
+
+  <!-- <table *ngIf="(allFruits | filter: filterTerm).length !== 0" class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of allFruits | filter: filterTerm as searchResult">
+        <td>{{ item.Name }}</td>
+        <td>{{ item.Quantity }}</td>
+        <td>{{ item.Price }}</td>
+
+        <td>
+          <a class="btn btn-primary" >Edit</a>
+          |
+          <button
+            type="button"
+            (click)="openDeleteModal(item)"
+            class="btn btn-danger"
+          >
+            Delete
+          </button>
+          <p *ngIf="item.length === 0">No Result</p>
+        </td>
+      </tr>
+    </tbody>
+  </table> -->
+  <div class="container-fluid">
+    <div class="row">
+      <div
+        class="col-lg-4 mt-3"
+        *ngFor="let item of allFruits | filter: filterTerm as searchResult"
+      >
+        <div class="card" style="width: 18rem">
+          <img
+            class="card-img-top w-18rwm"
+            src="{{ item.irl }}"
+            alt="Card image cap"
+            (click)="productDetail()"
+          />
+          <div class="card-body">
+            <h1 class="card-title">{{ item.Name }}</h1>
+            <!-- <p class="card-text">Quantity:{{item.Quantity}}</p> -->
+            <h3 class="card-text">{{ item.Price | currency: "INR" }}</h3>
+            <div class="d-flex justify-content-between">
+              <!-- <button class="btn btn-dark">Buy Now</button> -->
+              <button mat-raised-button>Buy Now</button>
+              <button  matRipple [matRippleColor]="color"  class="btn btn-dark" (click)="addToCart(item)">
+                Add To Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="(allFruits | filter: filterTerm).length === 0">
+    <h1>No Content</h1>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-body">Your product has been added to the cart!</div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-default btn-outline-success"
+      (click)="discardAll()"
+      data-dismiss="modal"
+    >
+      YES
+    </button>
+  </div>
+</ng-template>
+<!-- (click)="openDeleteModal(item)" -->

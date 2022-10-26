@@ -1,0 +1,43 @@
+<button type="button" class="close pull-right" aria-label="Close" (click)="CloseModal()">
+  <span aria-hidden="true" style="font-size: 2em; color: red;padding: 10px;">&times;</span>
+</button>
+
+<div class="container">
+
+  <legend>Create Item</legend>
+  <form [formGroup]="createForm" (ngSubmit)="create()">
+    <div class="mb-3">
+      <label for="txtName" class="form-label">Name</label>
+      <input type="text" name="name" formControlName="Name"  class="form-control" id="txtName"
+      [ngClass]="{ 'is-invalid': submitted && f['Name'].errors }"/>
+      <div *ngIf="submitted && f['Name'].errors" class="invalid-feedback">
+        <div *ngIf="f['Name'].errors['required']">Name is required</div>
+    </div>
+    </div>
+    <div class="mb-3">
+      <label for="txtPrice" class="form-label">Price</label>
+      <input type="number" name="price" formControlName="Price"  class="form-control" id="txtPrice" [ngClass]="{ 'is-invalid': submitted && f['Price'].errors }" />
+      <div *ngIf="submitted && f['Price'].errors" class="invalid-feedback">
+        <div *ngIf="f['Price'].errors['required']">Price is required</div>
+    </div>
+    </div>
+    <div class="mb-3">
+      <label for="txtQuantity" class="form-label">Quantity</label>
+      <input type="number" name="quantity" formControlName="Quantity"  class="form-control" id="txtQuantity"
+      [ngClass]="{ 'is-invalid': submitted && f['Quantity'].errors }" />
+      <div *ngIf="submitted && f['Quantity'].errors" class="invalid-feedback">
+        <div *ngIf="f['Quantity'].errors['required']">Quantity is required</div>
+    </div>
+    </div>
+    <div class="mb-3">
+      <label for="txtQuantity" class="form-label">Url</label>
+      <input type="text" name="irl" formControlName="irl"  class="form-control" id="txtQuantity"
+      [ngClass]="{ 'is-invalid': submitted && f['irl'].errors }" />
+      <div *ngIf="submitted && f['irl'].errors" class="invalid-feedback">
+        <div *ngIf="f['irl'].errors['irl']">Quantity is required</div>
+    </div>
+    </div>
+    <!-- <button type="submit"  class="btn btn-primary">Create</button> -->
+    <app-submit-button [type]="'submit'" [label]="'Create'" [className]="'btn btn-dark'"> </app-submit-button>
+  </form>
+</div>
